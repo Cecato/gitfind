@@ -61,6 +61,7 @@ button{
 
     border-radius: 50%;
     margin-right: 32px;
+
 }
 
 .perfil h3{
@@ -70,12 +71,26 @@ button{
 }
 
 .perfil span{
-
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    margin: 0;
 }
 
 .perfil p{
     display:block;
     color: rgb(255, 255, 255);
     font-size: 14px;
-    margin: 0;
+    margin: 20px 0 0 0;
+}
+
+.repositorio{
+    font-size: 32px;
+    color: #FFFF;
+    margin: 12px 0;
+    
+    text-align: center;
+}
+
+.line{
+    border-bottom: 2px dashed rgba(233, 233, 233, 0.753);
 }
