@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import {RepoStyle} from './styles';
 import {Header} from '../../components/Header';
 import ItemList from '../../components/ItemList';
-import './styles.css';
 
 function App() {
     const [user, setUser] = useState('');
@@ -27,8 +27,10 @@ function App() {
     }
 
     return (
+        <>
         <div className="App">
             <Header/>
+            <RepoStyle>
             <div className='conteudo'>
 
                 <div className='info'>
@@ -39,7 +41,7 @@ function App() {
                             value={user}
                             onChange={event => setUser(event.target.value)}
                             />
-                        <button onClick={handleGetData}>Buscar</button>
+                        <button onClick={handleGetData} mouse>Buscar</button>
                     </div>
 
                     {currentUser?.name ?(
@@ -80,8 +82,9 @@ function App() {
                 </div>
 
             </div>
-            
+            </RepoStyle>
         </div>
+        </>
     );
 };
 
