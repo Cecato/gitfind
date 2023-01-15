@@ -3,21 +3,11 @@
     display: flex;
     align-items: flex-start;
 
-    justify-content: flex-end;
-}
-
-.background{
-    width: auto;
-    height: 89vh;
-    opacity: 0.15;
-
-    position: absolute;
-    left: 0;
-    border-radius: 50%;
+    justify-content: center;
 }
 
 .info{
-    width: 70%;
+    width: 50%;
     margin-right: 90px;
     margin-top: 40px;
     color: #fffF;
@@ -30,11 +20,12 @@ input{
     min-width: 250px;
 
     margin-right: 12px;
-    width: 70%;
+    width: 80%;
     background: transparent;
 
     font-size: 18px;
     padding: 10px;
+    color: #ffff;
 }
 
 button{

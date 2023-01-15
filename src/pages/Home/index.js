@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {Header} from '../../components/Header';
-import background from "../../assets/background.png"
 import ItemList from '../../components/ItemList';
 import './styles.css';
 
@@ -14,8 +13,8 @@ function App() {
         const newUser = await userData.json();
 
         if(newUser.name){
-            const {avatar_url, name, bio} = newUser;
-            setCurrentUser({avatar_url, name, bio});
+            const {avatar_url, name, bio, login} = newUser;
+            setCurrentUser({avatar_url, name, bio, login});
 
             const reposData = await fetch(`https://api.github.com/users/${user}/repos`);
             const newRepos = await reposData.json();
@@ -32,8 +31,6 @@ function App() {
             <Header/>
             <div className='conteudo'>
 
-                <img src={background} alt="github img" className='background'/>
-
                 <div className='info'>
                     <div>
                         <input 
@@ -42,21 +39,21 @@ function App() {
                             value={user}
                             onChange={event => setUser(event.target.value)}
                             />
-                        <button onClick={handleGetData}>Buscas</button>
+                        <button onClick={handleGetData}>Buscar</button>
                     </div>
 
                     {currentUser?.name ?(
                         <>
                         <div className='perfil'>
                             <img 
-                                src="https://avatars.githubusercontent.com/u/69871760?v=4" 
+                                src={currentUser.avatar_url}
                                 className='profile' 
                                 alt='profile'/>
 
                             <div>
-                                <h3>Gustavo Cecato</h3>
-                                <span>@gu_cecato</span>
-                                <p>Descrição</p>
+                                <h3>{currentUser.name}</h3>
+                                <span>@{currentUser.login}</span>
+                                <p>{currentUser.bio}</p>
                             </div>
                         </div>
                         <hr/>
@@ -70,24 +67,18 @@ function App() {
                         <>
                         <div>
                             <h4 className='repositorio'>Repositório</h4>
-                            <ItemList 
-                                title="teste1" 
-                                description="teste1"/>
-                            <ItemList 
-                                title="teste1" 
-                                description="teste1"/>
-                            <ItemList 
-                                title="teste1" 
-                                description="teste1"/>
-                            <ItemList 
-                                title="teste1" 
-                                description="teste1"/>
+                            {repos.map(repo => (
+                                <ItemList 
+                                    title={repo.name} 
+                                    description={repo.description}/>
+                            ))}
+
                         </div>
                         </>
                     ): null}
 
                 </div>
-                
+
             </div>
             
         </div>
